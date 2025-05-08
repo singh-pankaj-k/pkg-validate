@@ -95,6 +95,21 @@ describe( 'AuthUtil test', function () {
             done();
         } );
 
+        it( 'isSafeSearchString returns true if input is character false otherwise', function ( done ) {
+            assert.ok( validate.isSafeSearchString( 'Peter @ Singh' ), 'Bad name' );
+            assert.ok( !validate.isSafeSearchString( '3Peter' ), 'Bad name' );
+            assert.ok( validate.isSafeSearchString( 'Peter (Singh)' ), 'Good name' );
+            assert.ok( validate.isSafeSearchString( 'Peter' ), 'Good name' );
+            assert.ok( validate.isSafeSearchString( 'Peter-Singh' ), 'Peter-Singh' );
+            assert.ok( validate.isSafeSearchString( 'P. Singh' ), 'Peter-Singh' );
+            assert.ok( validate.isSafeSearchString( "P's Singh" ), "P's Singh" );
+            assert.ok( validate.isSafeSearchString( "P's Singh-Lion" ), "P's Singh-Lion" );
+            assert.ok( validate.isSafeSearchString( "P's Singh-Lion,s" ), "P's Singh-Lion" );
+            assert.ok( validate.isSafeSearchString( " P's Singh-Lion " ), "P's Singh-Lion" );
+            assert.ok( validate.isSafeSearchString( "pank@gmail.com " ), "pank@gmail.com" );
+            done();
+        } );
+
         it( 'isEmailString returns true if input is email false otherwise ', function ( done ) {
             assert.ok( !validate.isEmailString( goodString ), 'Bad email test failed' );
             assert.ok( !validate.isEmailString( badString ), 'Bad email test failed' );
