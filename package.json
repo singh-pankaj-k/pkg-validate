@@ -1,7 +1,10 @@
 {
   "name": "@chatpta/validate",
   "version": "3.0.27",
-  "repository": "https://github.com/chatpta/pkg-validate",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/chatpta/pkg-validate.git"
+  },
   "description": "Validate data",
   "main": "index.js",
   "scripts": {
@@ -16,6 +19,5 @@
   "devDependencies": {
     "mocha": "10.2.0"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
